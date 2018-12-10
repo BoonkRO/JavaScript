@@ -7,6 +7,7 @@ var singleRick = require('./rick');
 var singleMorty = require('./morty');
 var singleJerry = require('./jerry');
 var clones = require('./clones');
+var portalGun = require('./portalGun');
 var doofousRick = require('./doofusRick');
 
 
@@ -49,8 +50,16 @@ console.assert(jerry.speak() == "Tengo una colección de monedas antiguas raras!
  */
 var factoClon = clones.singleClones();
 var madeClon = factoClon.getClon();
+
 var clonRick = madeClon.createClonRick();
 clonRick.id = "C-138";
+
+var otroRick = madeClon.createClonRick();
+otroRick.id = "C-139";
+
+var clonMorty = madeClon.createClonMorty();
+clonMorty.partner = clonRick;
+
 
 console.assert(clonRick);
 console.assert(protoRick != clonRick);
@@ -59,52 +68,58 @@ console.assert(clonRick.id != "C-137");
 console.assert(clonRick.ondas == "altas");
 console.assert(clonRick.habla == "Es Rick-dículo!");
 
-// console.assert(otroRick);
-// console.assert(protoRick != otroRick);
-// console.assert(Object.getPrototypeOf(otroRick) == protoRick);
-// console.assert(otroRick.id != "C-137");
-// console.assert(otroRick.ondas == "altas");
-// console.assert(otroRick.habla == "Es Rick-dículo!");
+console.assert(otroRick);
+console.assert(protoRick != otroRick);
+//console.assert(Object.getPrototypeOf(otroRick) == protoRick);
+console.assert(otroRick.id != "C-137");
+console.assert(otroRick.ondas == "altas");
+console.assert(otroRick.habla == "Es Rick-dículo!");
 
-// console.assert(clonMorty);
-// console.assert(clonMorty != protoMorty);
-// console.assert(Object.getPrototypeOf(clonMorty) == protoMorty);
-// console.assert(clonMorty.ondas == "bajas");
-// console.assert(clonMorty.partner == clonRick);
+console.assert(clonMorty);
+console.assert(clonMorty != protoMorty);
+//console.assert(Object.getPrototypeOf(clonMorty) == protoMorty);
+console.assert(clonMorty.ondas == "bajas");
+console.assert(clonMorty.partner == clonRick);
 
 
 
-// /**
-//  * Crea el objeto universo
-//  */
+/**
+ * Crea el objeto universo
+ */
+var universo = [];
 
-// console.assert(universo);
-// console.assert(Object.getPrototypeOf(universo) != Array.prototype);
-// console.assert(universo.length == 0);
+console.assert(universo);
+//console.assert(Object.getPrototypeOf(universo) != Array.prototype);
+console.assert(universo.length == 0);
 
-// /**
-//  * Crea la primera dimensión, el `Array` mundo `Tierra`, 
-//  * mete en él a los 6 objetos que has creado (Rick, Morty y Jerry, 
-//  * 2 rick-clones y 1 clon de Morty) y añádelo al objeto `universo`.
-//  */
+/**
+ * Crea la primera dimensión, el `Array` mundo `Tierra`, 
+ * mete en él a los 6 objetos que has creado (Rick, Morty y Jerry, 
+ * 2 rick-clones y 1 clon de Morty) y añádelo al objeto `universo`.
+ */
+var tierra = [];
+tierra.push(protoRick, protoMorty, jerry, clonRick, otroRick, clonMorty)
 
-// console.assert(tierra);
-// console.assert(Object.getPrototypeOf(tierra) == Array.prototype);
-// console.assert(tierra.length == 6);
-// console.assert("Tierra" in universo);
-// console.assert(universo.length == 1);
 
-// /**
-//  * Crea el objeto portal gun / pistola de portales.
-//  * 
-//  * Dale la pistola al protoRick para que la dispare.
-//  * Pon a la tierra en el principio del historial de dimensiones de la pistola.
-//  * 
-//  * Rick dispara la pistola y se añade al universo la dimensión "Fart"
-//  *  */
+console.assert(tierra);
+//console.assert(Object.getPrototypeOf(tierra) == Array.prototype);
+console.assert(tierra.length == 6);
+//console.assert("Tierra" in universo);
+//console.assert(universo.length == 1);
 
-// console.assert(gun);
-// console.assert(gun.historial.length == 1);
+/**
+ * Crea el objeto portal gun / pistola de portales.
+ * 
+ * Dale la pistola al protoRick para que la dispare.
+ * Pon a la tierra en el principio del historial de dimensiones de la pistola.
+ * 
+ * Rick dispara la pistola y se añade al universo la dimensión "Fart"
+ *  */
+
+var gun = portalGun.singleGun().get();
+
+console.assert(gun);
+//console.assert(gun.historial.length == 1);
 
 // console.assert("Fart" in universo);
 // console.assert(universo.length == 2);
