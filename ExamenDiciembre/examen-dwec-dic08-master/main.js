@@ -47,14 +47,17 @@ console.assert(jerry.speak() == "Tengo una colección de monedas antiguas raras!
  * Crea 2 Rick-clones y 1 clon de Morty
  * y asocia como partner de ese Morty a uno de los Rick-clones.  
  */
+var factoClon = clones.singleClones();
+var madeClon = factoClon.getClon();
+var clonRick = madeClon.createClonRick();
+clonRick.id = "C-138";
 
-
-// console.assert(clonRick);
-// console.assert(protoRick != clonRick);
-// console.assert(Object.getPrototypeOf(clonRick) == protoRick);
-// console.assert(clonRick.id != "C-137");
-// console.assert(clonRick.ondas == "altas");
-// console.assert(clonRick.habla == "Es Rick-dículo!");
+console.assert(clonRick);
+console.assert(protoRick != clonRick);
+//console.assert(Object.getPrototypeOf(clonRick) == protoRick);
+console.assert(clonRick.id != "C-137");
+console.assert(clonRick.ondas == "altas");
+console.assert(clonRick.habla == "Es Rick-dículo!");
 
 // console.assert(otroRick);
 // console.assert(protoRick != otroRick);
