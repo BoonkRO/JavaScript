@@ -1,3 +1,4 @@
+var portalGun = require('./portalGun');
 
 function Rick(){
     this.id = "C-137";
@@ -6,7 +7,7 @@ function Rick(){
 }
 
 Rick.prototype.dispara = function(){
-    return portalGun();
+    return portalGun;
 }
 
 
