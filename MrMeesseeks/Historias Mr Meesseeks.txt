@@ -1,0 +1,34 @@
+1� PARTE
+
+	1.- Pulsa, sale meeseeks y saluda "Hi i'm Mr.Meesseeks, look at me!"
+		Metodo speakOnCreate()
+	2.- Le pides lo que quieres que haga, da por hecho que lo puede hacer y
+	responde "Can do!" "Ouh Yeah!"
+		Metodo makeRequest(que tienes que hacer, sobre que tienes que hacerlo)
+	3.- Soluciona el problema
+		Metodo fulfillRequest()
+		Sale por pantalla la acci�n + "all done!"
+	4.- Deja de existir
+		Metodo stopExisting()
+
+	La caja solo crea los Mr Meesseeks, clase proxy (patr�n proxy)
+	En cualquier momento del programa solo existe una sola caja.
+		clase est�tica, la caja, que es llamada cada vez que se necesita.
+
+HISTORIA DE USUARIO 
+	Abrir el bote de mayonesa.
+	Ser mas popular en el instituto.
+	Ser mas mujer.
+	
+2� PARTE
+	Ense�ar al penultimo Mr Meesseeks a 
+	Meter todos los Mr. Meesseeks en un Array (new array reality)
+	Crear objeto "cazo" y checkear que "tomate" est� en objet "olla"
+	Metodo (draw)learnRequest(function que comprueba si tomate est� en olla, objeto tomate)
+		Si el tomate no est� en la olla mensaje "I wanna die"
+		Recibe una funcion y un objeto
+		Acaba con la frase "that's a lower handicap stroke" y desaparecen 
+		del primero al penultimo
+	
+	Ultimo Mr Meesseeks con el metodo (putt)learnRequest()
+		Meter cebolla en taza.

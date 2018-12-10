@@ -24,6 +24,8 @@ function oddsums(n) {
 
 console.log(oddsums(5));            // Returns [1,4,9,16,25]
 
-/*
-
-*/
+/**
+ * x is not defined(). La variable x no tiene ningun valor fuera del 'for' por que ha sido declarada con 'let'.
+ * odd() is not defined. La varible odd esta dentro del 'for' declarada con let, no es visible fuera.
+ * Devuelve 25. Total es una variable global, ya que se ha creado sin definir su rango. 
+ */
