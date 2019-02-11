@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejercicios BOM</title>
+</head>
+
+<body>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" id="previous" onclick="somewhere(this.id)">Previous</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" id="next" onclick="somewhere(this.id)">Next</a>
+
+</body>
+<script>
+
+    function somewhere(eleccion) {
+        if (eleccion == "previous") {
+            window.history.back();
+        } else {
+            window.history.forward();
+        }
+    }
+
+</script>
+
+</html>

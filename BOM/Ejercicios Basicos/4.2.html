@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejercicios BOM</title>
+</head>
+
+<body onload="horaActual()">
+    <span>Hora: </span>
+    <div id="divHora"></div>
+
+</body>
+<script>
+
+    function horaActual() {
+        var fecha = new Date();
+
+        var hora = fecha.getHours();
+        var minutos = fecha.getMinutes();
+        var segundos = fecha.getSeconds();
+        if (hora < 10) { hora = "0" + hora }
+        if (minutos < 10) { minutos = "0" + minutos }
+        if (segundos < 10) { segundos = "0" + segundos }
+
+        var result = hora + ":" + minutos + ":" + segundos;
+        document.getElementById("divHora").innerHTML = result;
+
+        setTimeout("horaActual()", 1000);
+    }
+
+</script>
+
+</html>

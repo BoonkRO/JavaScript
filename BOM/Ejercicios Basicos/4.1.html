@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejercicios BOM</title>
+</head>
+
+<body>
+    <div id="titulo"></div>
+    
+    <span>Nombre: </span>
+    <input type="text" id="campoNombre" name="nombre" placeholder="Escribe tu nombre" />
+    <br /><br />
+
+    <input type="button" onclick="activarAlert()" value="Enviar" />
+
+</body>
+<script>
+
+function activarAlert(){
+    var nombre = document.getElementById("campoNombre").value;
+    document.getElementById("titulo").innerHTML = nombre.toUpperCase();
+    document.title = nombre;
+    alert(nombre.toUpperCase());
+}
+
+</script>
+</html>
