@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejercicio 1</title>
+<script type="text/javascript">
+
+
+function saberTipoEtiqueta(objeto) {
+	switch (objeto.type) {
+		case "text":
+		case "textarea":
+			return objeto.value;
+		break;
+		case "radio":
+		case "checkbox":
+			if (objeto.checked) {
+				return objeto.value;
+			}
+			else {
+				return "";			
+			}
+		break;
+		case "select-one":
+			return objeto.options[objeto.selectedIndex].value;
+		break;
+	}
+}
+function validateForm() {
+	var idEtiqueta = document.getElementById("formulario");
+	var texto = "";
+	var txtTemp = "";
+	for (var i = 0; i < idEtiqueta.elements.length-1; i++) {
+		txtTemp = saberTipoEtiqueta(idEtiqueta.elements[i]);
+		if (txtTemp != "") {
+			if (i != idEtiqueta.elements.length-2) {
+				texto += txtTemp + ", ";
+			} else {
+				texto += txtTemp + ".";
+			}
+			txtTemp = "";
+		}
+	}
+	document.getElementById("resutlado").innerHTML = "Continguts dels diferents camps: " + texto;
+	return false;
+}
+
+</script>
+</head>
+<body>
+	<form name="formulario" id="formulario" onsubmit="return validateForm()" method="post">
+		Name: <input type="text" name="fname" placeholder="Introduce tu nombre"><br /><br />
+		<textarea rows="5" cols="50" placeholder="Introduce tu texto..."></textarea><br>
+		<input type="radio" name="tipo" value="dual">Soy Dualer<br>
+		<input type="radio" name="tipo" value="presencial">Soy Presencialer<br /><br />
+		<input type="checkbox" name="vehicle" value="Bike"> Me gustan las ventanas<br />
+	   <input type="checkbox" name="vehicle" value="Car" checked> A mi me van mas los pingüinos<br /><br />
+	   <select>
+		  <option value="Cliente">Cliente</option>
+		  <option value="Servidor">Servidor</option>
+		  <option value="PHP">PHP</option>
+		</select><br /><br />
+		<input type="submit" value="Enviar">
+	</form>
+	<p id="resutlado">Contenido de los campos: </p>
+</body>
+</html>
