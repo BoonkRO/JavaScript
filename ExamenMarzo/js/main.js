@@ -95,11 +95,12 @@ var raffles = {
 var jsonRifas = JSON.stringify(raffles);
 var rifas = JSON.parse(jsonRifas);
 
-function documentReady() {
+window.onload = function () {
     loadProducto();
     cargarRifas();
     estilosBoton();
     linkToShop();
+    participationDone();
 }
 
 
@@ -171,21 +172,53 @@ function linkToShop() {
     buttonHover();
 }
 
-function buttonHover(){
+function buttonHover() {
     let i = 0;
     for (rifa in rifas) {
         var buton = document.getElementsByClassName("url")[i];
-        buton.setAttribute("onmouseover", "mouseEntra(this)");
-        buton.setAttribute("onmouseout", "mouseSale(this)");
+        buton.setAttribute("onmouseover", "mouseIn(this)");
+        buton.setAttribute("onmouseout", "mouseOut(this)");
         i++;
     }
 }
 
-function mouseEntra(cosa){
+function mouseIn(cosa) {
     cosa.style.opacity = "0.5";
 }
 
-function mouseSale(cosa){
+function mouseOut(cosa) {
     cosa.style.opacity = "1";
 }
 
+
+function participationDone() {
+    let i = 0;
+    
+    for (rifa in rifas) {
+        var divRifa = document.getElementsByClassName("rifa")[i];
+        var elementP = document.createElement("p");
+        elementP.setAttribute("class", "marcarRifa");
+        elementP.setAttribute("id", i);
+        elementP.setAttribute("onclick", "rifaVisitada(this)");
+        divRifa.appendChild(elementP);
+        i++;
+
+        if(localStorage.getItem("Rifa" + elementP.id) == null){
+            elementP.innerHTML = "Mark as entered";
+            localStorage.setItem("Rifa" + elementP.id, "Mark as entered");
+        }else{
+            elementP.innerHTML = localStorage.getItem("Rifa" + elementP.id);
+        }
+    }
+}
+
+function rifaVisitada(objeto){
+
+    if(objeto.innerHTML == "Entered"){
+        objeto.innerHTML = "Mark as entered";
+        localStorage.setItem("Rifa" + objeto.id, "Mark as entered");
+    }else{
+        objeto.innerHTML = "Entered";
+        localStorage.setItem("Rifa" + objeto.id, "Entered");
+    }
+}
