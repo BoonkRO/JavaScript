@@ -92,9 +92,9 @@ var raffles = {
 //     "raffles": raffles
 // };
 
-const jsonRaffles = require('./raffles');
+// const jsonRaffles = require('./raffles');
 // var jsonRaffles = JSON.stringify(jsonRaffles.sole["raffles"]);
-// var jsonShoe = JSON.stringify(jsonRaffles.sole["shoe"]);
+// var jsonShoe = JSON.stringify(jsonRaffles.sole["raffles"])
 
 var jsonRifas = JSON.stringify(raffles);
 var rifas = JSON.parse(jsonRifas);
