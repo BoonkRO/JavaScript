@@ -92,6 +92,10 @@ var raffles = {
 //     "raffles": raffles
 // };
 
+const jsonRaffles = require('./raffles');
+// var jsonRaffles = JSON.stringify(jsonRaffles.sole["raffles"]);
+// var jsonShoe = JSON.stringify(jsonRaffles.sole["shoe"]);
+
 var jsonRifas = JSON.stringify(raffles);
 var rifas = JSON.parse(jsonRifas);
 
@@ -107,9 +111,7 @@ window.onload = function () {
 function loadProducto() {
     document.getElementById("modelo").innerHTML = shoe["model"];
     document.getElementById("color").innerHTML = shoe["colour"];
-    document.getElementById("codigo").innerHTML = shoe["code"];
-    document.getElementById("disponibilidad").innerHTML = shoe["avaliable"];
-    document.getElementById("precio").innerHTML = shoe["price"];
+    document.getElementById("info").innerHTML = shoe["code"] + " | " + shoe["avaliable"] + " | " + shoe["price"];
 }
 
 
@@ -129,7 +131,6 @@ function cargarRifas() {
         document.getElementsByClassName("closes")[i].innerHTML = rifas[rifa].Closes;
         var url = document.getElementsByClassName("url")[i];
         url.setAttribute("value", "ENTER RAFFLE");
-
 
         i++;
     }
@@ -193,7 +194,7 @@ function mouseOut(cosa) {
 
 function participationDone() {
     let i = 0;
-    
+
     for (rifa in rifas) {
         var divRifa = document.getElementsByClassName("rifa")[i];
         var elementP = document.createElement("p");
@@ -203,21 +204,21 @@ function participationDone() {
         divRifa.appendChild(elementP);
         i++;
 
-        if(localStorage.getItem("Rifa" + elementP.id) == null){
+        if (localStorage.getItem("Rifa" + elementP.id) == null) {
             elementP.innerHTML = "Mark as entered";
             localStorage.setItem("Rifa" + elementP.id, "Mark as entered");
-        }else{
+        } else {
             elementP.innerHTML = localStorage.getItem("Rifa" + elementP.id);
         }
     }
 }
 
-function rifaVisitada(objeto){
+function rifaVisitada(objeto) {
 
-    if(objeto.innerHTML == "Entered"){
+    if (objeto.innerHTML == "Entered") {
         objeto.innerHTML = "Mark as entered";
         localStorage.setItem("Rifa" + objeto.id, "Mark as entered");
-    }else{
+    } else {
         objeto.innerHTML = "Entered";
         localStorage.setItem("Rifa" + objeto.id, "Entered");
     }
