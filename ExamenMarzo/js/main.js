@@ -99,6 +99,7 @@ function documentReady() {
     loadProducto();
     cargarRifas();
     estilosBoton();
+    linkToShop();
 }
 
 
@@ -127,7 +128,7 @@ function cargarRifas() {
         document.getElementsByClassName("closes")[i].innerHTML = rifas[rifa].Closes;
         var url = document.getElementsByClassName("url")[i];
         url.setAttribute("value", "ENTER RAFFLE");
-        
+
 
         i++;
     }
@@ -159,3 +160,32 @@ function estilosBoton() {
         i++;
     }
 }
+
+function linkToShop() {
+    let i = 0;
+    for (rifa in rifas) {
+        var buton = document.getElementsByClassName("url")[i];
+        buton.setAttribute("onclick", "window.open('" + rifas[rifa].url + "')");
+        i++;
+    }
+    buttonHover();
+}
+
+function buttonHover(){
+    let i = 0;
+    for (rifa in rifas) {
+        var buton = document.getElementsByClassName("url")[i];
+        buton.setAttribute("onmouseover", "mouseEntra(this)");
+        buton.setAttribute("onmouseout", "mouseSale(this)");
+        i++;
+    }
+}
+
+function mouseEntra(cosa){
+    cosa.style.opacity = "0.5";
+}
+
+function mouseSale(cosa){
+    cosa.style.opacity = "1";
+}
+
