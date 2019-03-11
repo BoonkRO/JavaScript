@@ -75,7 +75,7 @@ var raffles = {
     },
 
     "Solebox": {
-        "logo": "https://www.soleretriever.com/wp-content/uploads/2018/04/SoleBox.jpg'git",
+        "logo": "https://www.soleretriever.com/wp-content/uploads/2018/04/SoleBox.jpg",
         "country": "Germany",
         "purchase": "In-Store/Online",
         "collection": "Post and Collect",
@@ -92,19 +92,70 @@ var raffles = {
 //     "raffles": raffles
 // };
 
-
+var jsonRifas = JSON.stringify(raffles);
+var rifas = JSON.parse(jsonRifas);
 
 function documentReady() {
     loadProducto();
     cargarRifas();
+    estilosBoton();
 }
 
 
-function loadProducto(){
+function loadProducto() {
     document.getElementById("modelo").innerHTML = shoe["model"];
     document.getElementById("color").innerHTML = shoe["colour"];
     document.getElementById("codigo").innerHTML = shoe["code"];
-    document.getElementById("disponibilidad").innerHTML = shoe["available"];
+    document.getElementById("disponibilidad").innerHTML = shoe["avaliable"];
     document.getElementById("precio").innerHTML = shoe["price"];
 }
 
+
+function cargarRifas() {
+    let i = 0;
+    for (rifa in rifas) {
+        var divRifa = document.getElementsByClassName("rifa")[i];
+        divRifa.style.fontSize = "200%";
+
+        document.getElementsByClassName("shopName")[i].innerHTML = rifa;
+        document.getElementsByClassName("logo")[i].src = rifas[rifa].logo;
+        document.getElementsByClassName("country")[i].innerHTML = rifas[rifa].country;
+        document.getElementsByClassName("purchase")[i].innerHTML = rifas[rifa].purchase;
+        document.getElementsByClassName("collection")[i].innerHTML = rifas[rifa].collection;
+        document.getElementsByClassName("sized")[i].innerHTML = rifas[rifa].Sizes;
+        document.getElementsByClassName("opens")[i].innerHTML = rifas[rifa].Opens;
+        document.getElementsByClassName("closes")[i].innerHTML = rifas[rifa].Closes;
+        var url = document.getElementsByClassName("url")[i];
+        url.setAttribute("value", "ENTER RAFFLE");
+        
+
+        i++;
+    }
+}
+
+function estilosBoton() {
+    let i = 0;
+    for (rifa in rifas) {
+        var buton = document.getElementsByClassName("url")[i];
+        var url = document.getElementsByClassName("url")[i];
+        var shopName = document.getElementsByClassName("shopName")[i];
+
+        shopName.style.fontWeight = "600";
+
+        url.style.width = "400px";
+        url.style.height = "50px";
+        url.style.fontSize = "30px";
+
+        if (rifas[rifa].Opens == "live" && rifas[rifa].Closes != "closed") {
+            buton.style.backgroundColor = "green";
+        } else if (rifas[rifa].Closes == "closed") {
+            buton.style.backgroundColor = "red";
+            buton.value = "CLOSED";
+        } else {
+            buton.style.backgroundColor = "grey";
+            buton.value = "ANNOUNCED";
+        }
+
+        i++;
+    }
+}
